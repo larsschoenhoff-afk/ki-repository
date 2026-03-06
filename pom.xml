@@ -28,7 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
-		<jakarta.faces.version>4.0.8</jakarta.faces.version>
+		<myfaces.version>4.0.2</myfaces.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -42,9 +42,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>jakarta.faces</artifactId>
-			<version>${jakarta.faces.version}</version>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>${myfaces.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-impl</artifactId>
+			<version>${myfaces.version}</version>
 		</dependency>
 
 		<dependency>
