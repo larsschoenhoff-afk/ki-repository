@@ -1,0 +1,136 @@
+:root {
+    --wpk-blue: #005b9f;
+    --wpk-dark-blue: #003a66;
+    --wpk-light-blue: #eef5fb;
+    --wpk-border: #d1deea;
+    --text-primary: #1e2a35;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    color: var(--text-primary);
+    background: linear-gradient(180deg, #f7fafd 0%, #edf3f9 100%);
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 3px solid var(--wpk-blue);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand-logo {
+    width: 165px;
+    height: auto;
+}
+
+.brand-title {
+    margin: 0;
+    color: var(--wpk-dark-blue);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.table-wrapper {
+    background: #fff;
+    border: 1px solid var(--wpk-border);
+    border-radius: 10px;
+    box-shadow: 0 6px 22px rgba(0, 58, 102, 0.08);
+    padding: 1.25rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--wpk-border);
+    border-radius: 6px;
+    min-width: 280px;
+    font-size: 0.95rem;
+}
+
+.search-input:focus {
+    outline: 2px solid rgba(0, 91, 159, 0.15);
+    border-color: var(--wpk-blue);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    background: var(--wpk-light-blue);
+    color: var(--wpk-dark-blue);
+    padding: 0.75rem;
+    text-align: left;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 2px solid var(--wpk-border);
+}
+
+tbody td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5edf4;
+}
+
+tbody tr:hover {
+    background: #f8fbff;
+}
+
+.pager {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.pager button {
+    border: 1px solid var(--wpk-blue);
+    color: var(--wpk-blue);
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+}
+
+.pager button:hover:not(:disabled) {
+    background: var(--wpk-light-blue);
+}
+
+.pager button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.hint {
+    font-size: 0.85rem;
+    color: #5e7184;
+}
