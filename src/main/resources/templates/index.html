@@ -18,7 +18,16 @@
     <div class="table-wrapper">
         <div class="controls">
             <input id="searchInput" class="search-input" type="text" placeholder="Suche in Name, Straße, Ort, PLZ oder Telefonnummer ...">
-            <span class="hint">Klick auf Spaltenkopf zum Sortieren</span>
+            <div class="controls-right">
+                <label for="pageSizeSelect" class="page-size-label">Einträge pro Seite</label>
+                <select id="pageSizeSelect" class="page-size-select">
+                    <option value="10" selected>10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="all">Alle</option>
+                </select>
+                <span class="hint">Klick auf Spaltenkopf zum Sortieren</span>
+            </div>
         </div>
 
         <table>
@@ -66,21 +75,23 @@
     const nextPage = document.getElementById('nextPage');
     const pageInfo = document.getElementById('pageInfo');
     const headers = document.querySelectorAll('th[data-column]');
+    const pageSizeSelect = document.getElementById('pageSizeSelect');
 
-    const pageSize = 3;
+    let pageSize = Number(pageSizeSelect.value);
     let currentPage = 1;
     let sortColumn = null;
     let sortDirection = 'asc';
     let filteredRows = [...rows];
 
     function renderTable() {
-        const totalPages = Math.max(1, Math.ceil(filteredRows.length / pageSize));
+        const effectivePageSize = Number.isFinite(pageSize) ? pageSize : filteredRows.length || 1;
+        const totalPages = Math.max(1, Math.ceil(filteredRows.length / effectivePageSize));
         if (currentPage > totalPages) {
             currentPage = totalPages;
         }
 
-        const startIndex = (currentPage - 1) * pageSize;
-        const pageRows = filteredRows.slice(startIndex, startIndex + pageSize);
+        const startIndex = (currentPage - 1) * effectivePageSize;
+        const pageRows = filteredRows.slice(startIndex, startIndex + effectivePageSize);
 
         tableBody.innerHTML = pageRows.map(row => `
             <tr>
@@ -134,6 +145,13 @@
         });
     });
 
+
+    pageSizeSelect.addEventListener('change', () => {
+        pageSize = pageSizeSelect.value === 'all' ? Number.POSITIVE_INFINITY : Number(pageSizeSelect.value);
+        currentPage = 1;
+        renderTable();
+    });
+
     prevPage.addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;
@@ -142,7 +160,8 @@
     });
 
     nextPage.addEventListener('click', () => {
-        const totalPages = Math.max(1, Math.ceil(filteredRows.length / pageSize));
+        const effectivePageSize = Number.isFinite(pageSize) ? pageSize : filteredRows.length || 1;
+        const totalPages = Math.max(1, Math.ceil(filteredRows.length / effectivePageSize));
         if (currentPage < totalPages) {
             currentPage++;
             renderTable();

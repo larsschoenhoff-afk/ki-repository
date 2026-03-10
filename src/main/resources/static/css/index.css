@@ -134,3 +134,23 @@ tbody tr:hover {
     font-size: 0.85rem;
     color: #5e7184;
 }
+
+.controls-right {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.page-size-label {
+    font-size: 0.85rem;
+    color: #42586d;
+}
+
+.page-size-select {
+    border: 1px solid var(--wpk-border);
+    border-radius: 6px;
+    padding: 0.4rem 0.5rem;
+    background: #fff;
+    color: var(--text-primary);
+}
