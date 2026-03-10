@@ -154,3 +154,9 @@ tbody tr:hover {
     background: #fff;
     color: var(--text-primary);
 }
+
+.error-message {
+    color: #9f1c1c;
+    margin: 12px 0;
+    font-weight: 600;
+}
