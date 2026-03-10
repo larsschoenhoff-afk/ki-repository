@@ -17,7 +17,7 @@
 
     <div class="table-wrapper">
         <div class="controls">
-            <input id="searchInput" class="search-input" type="text" placeholder="Suche in Name, Straße, Ort oder PLZ ...">
+            <input id="searchInput" class="search-input" type="text" placeholder="Suche in Name, Straße, Ort, PLZ oder Telefonnummer ...">
             <span class="hint">Klick auf Spaltenkopf zum Sortieren</span>
         </div>
 
@@ -28,6 +28,7 @@
                 <th data-column="street">Str.</th>
                 <th data-column="city">Ort</th>
                 <th data-column="postalCode">Postleitzahl</th>
+                <th data-column="phoneNumber">Telefonnummer</th>
             </tr>
             </thead>
             <tbody id="tableBody">
@@ -36,6 +37,7 @@
                 <td th:text="${entry.street}">Straße</td>
                 <td th:text="${entry.city}">Ort</td>
                 <td th:text="${entry.postalCode}">PLZ</td>
+                <td th:text="${entry.phoneNumber}">Telefonnummer</td>
             </tr>
             </tbody>
         </table>
@@ -54,7 +56,8 @@
         name: item.name,
         street: item.street,
         city: item.city,
-        postalCode: item.postalCode
+        postalCode: item.postalCode,
+        phoneNumber: item.phoneNumber
     }));
 
     const tableBody = document.getElementById('tableBody');
@@ -85,6 +88,7 @@
                 <td>${row.street}</td>
                 <td>${row.city}</td>
                 <td>${row.postalCode}</td>
+                <td>${row.phoneNumber}</td>
             </tr>
         `).join('');
 
